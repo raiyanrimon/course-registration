@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 
-const Blog = ({ blog, handleAddToCart }) => {
-    const { cover, title, description, price, credit } = blog
+const Course = ({course, handleSelectCourse}) => {
+    const { cover, title, description, price, credit } = course
     return (
         <div className="my-5 mx-auto">
             <img src={cover} alt="" />
@@ -10,14 +10,14 @@ const Blog = ({ blog, handleAddToCart }) => {
             <div className='flex justify-between mt-3 text-[#1C1B1B99]'><p>Price: {price}</p>
                 <p>credit: {credit}hr</p></div>
 
-            <button onClick={() => handleAddToCart(blog)} className='mt-5 rounded-lg bg-[#2F80ED] text-white text-center py-3 px-[112px]'>Select</button>
+            <button onClick={()=>handleSelectCourse(course)}  className='mt-5 rounded-lg bg-[#2F80ED] text-white text-center py-3 px-[112px]'>Select</button>
 
         </div>
     );
 };
 
-Blog.propTypes = {
-    blog: PropTypes.object.isRequired,
-    handleAddToCart: PropTypes.func
+Course.propTypes = {
+    course: PropTypes.object.isRequired,
+    handleSelectCourse: PropTypes.func
 }
-export default Blog;
+export default Course;
