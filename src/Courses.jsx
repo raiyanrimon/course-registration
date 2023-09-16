@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import Course from "./Course";
 import PropTypes from 'prop-types'
 import Cart from "./Cart";
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
+
 
 const Courses = () => {
     const [courses, setCourses] = useState([]);
@@ -19,7 +22,8 @@ const Courses = () => {
         let priceCount = course.price;
         let count = course.credit;
         if(isExist){
-          return  alert('Already added')
+        toast.warn('Already added')
+          
         }
         else{
             selectedCourse.forEach(item =>{
@@ -28,7 +32,7 @@ const Courses = () => {
             })
         const remaining = 20 - count;
         if(count > 20){
-            alert('You can not add more credit')
+            toast.warn('You can not add more credit')
         }
        
          else{
@@ -40,7 +44,7 @@ const Courses = () => {
       }
       console.log(selectedCourse)
     return (
-        <div className="md:flex">
+        <div className="lg:flex">
             <div className="md:w-2/3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
            {
             courses.map(course=> <Course key={course.id}
@@ -49,12 +53,14 @@ const Courses = () => {
            } 
 
         </div>
+        <ToastContainer></ToastContainer>
         <Cart selectedCourse={selectedCourse}
         remaining={remaining}
         totalCost={totalCost}
         totalPrice={totalPrice}
         ></Cart>
         </div>
+        
     );
 };
 
